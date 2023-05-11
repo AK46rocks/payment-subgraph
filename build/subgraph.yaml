@@ -1,0 +1,27 @@
+specVersion: 0.0.5
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: MaticPay
+    network: matic
+    source:
+      address: "0xc2132D05D31c914a87C6611C10748AEb04B58e8F"
+      abi: MaticPay
+      startBlock: 1000000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ProxyOwnerUpdate
+        - ProxyUpdated
+      abis:
+        - name: MaticPay
+          file: MaticPay/abis/MaticPay.json
+      eventHandlers:
+        - event: ProxyOwnerUpdate(address,address)
+          handler: handleProxyOwnerUpdate
+        - event: ProxyUpdated(indexed address,indexed address)
+          handler: handleProxyUpdated
+      file: MaticPay/MaticPay.wasm

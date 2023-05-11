@@ -1,0 +1,17 @@
+type ProxyOwnerUpdate @entity(immutable: true) {
+  id: Bytes!
+  _new: Bytes! # address
+  _old: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ProxyUpdated @entity(immutable: true) {
+  id: Bytes!
+  _new: Bytes! # address
+  _old: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
